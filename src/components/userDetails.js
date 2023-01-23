@@ -1,13 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
+import UserHome from "./userHome";
 
-export default class UserDetails extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      userData: "",
-    };
-  }
-  componentDidMount() {
+export default function UserDetails() {
+  const [userData, setUserData] = useState("");
+  const [admin, setAdmin] = useState(false);
+
+  useEffect(() => {
     fetch("http://localhost:5000/userData", {
       method: "POST",
       crossDomain: true,
@@ -23,15 +21,18 @@ export default class UserDetails extends Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data, "userData");
-        this.setState({ userData: data.data });
+        if (data.data.userType == "Admin") {
+          setAdmin(true);
+        }
+
+        setUserData(data.data);
+        if (data.data == "token expired") {
+          alert("Token expired login again");
+          window.localStorage.clear();
+          window.location.href = "./sign-in";
+        }
       });
-  }
-  render() {
-    return (
-      <div>
-        Name<h1>{this.state.userData.fname}</h1>
-        Email <h1>{this.state.userData.email}</h1>
-      </div>
-    );
-  }
+  }, []);
+
+  return admin ? <h1>"Welcome Admin</h1> : <UserHome userData={userData} />;
 }
