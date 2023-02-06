@@ -12,20 +12,16 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <div className="auth-wrapper">
-          <div className="auth-inner">
-            <Routes>
-              <Route
-                exact
-                path="/"
-                element={isLoggedIn == "true" ? <UserDetails /> : <Login />}
-              />
-              <Route path="/sign-in" element={<Login />} />
-              <Route path="/sign-up" element={<SignUp />} />
-              <Route path="/userDetails" element={<UserDetails />} />
-            </Routes>
-          </div>
-        </div>
+        <Routes>
+          <Route
+            exact
+            path="/"
+            element={isLoggedIn == "true" ? <UserDetails /> : <Login />}
+          />
+          <Route path="/sign-in" element={<Login />} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/userDetails" element={<UserDetails />} />
+        </Routes>
       </div>
     </Router>
   );
