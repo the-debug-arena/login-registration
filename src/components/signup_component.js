@@ -1,4 +1,5 @@
 import React, { Component, useState } from "react";
+import "../index.css";
 
 export default function SignUp() {
   const [fname, setFname] = useState("");
@@ -48,7 +49,7 @@ export default function SignUp() {
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit}>
-          <h3>Sign Up</h3>
+          <h3>Register</h3>
           <div>
             Register As
             <input
@@ -120,11 +121,11 @@ export default function SignUp() {
 
           <div className="d-grid">
             <button type="submit" className="btn btn-primary">
-              Sign Up
+              Register
             </button>
           </div>
           <p className="forgot-password text-right">
-            Already registered <a href="/sign-in">sign in?</a>
+            Already registered <a href="/login">Login?</a>
           </p>
         </form>
       </div>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { faTrash,faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
+import "../App.css";
 export default function AdminHome({}) {
   //setting state
   const [data, setData] = useState([]);
@@ -26,7 +26,7 @@ export default function AdminHome({}) {
   //logout
   const logOut = () => {
     window.localStorage.clear();
-    window.location.href = "./sign-in";
+    window.location.href = "./login";
   };
 
   //deleting user

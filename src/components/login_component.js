@@ -1,5 +1,6 @@
 import React, { Component, useState } from "react";
-
+import "../App.css";
+import { Navigate } from "react-router-dom";
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,11 +26,18 @@ export default function Login() {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.status == "ok") {
+          console.log(data.userType);
           alert("login successful");
           window.localStorage.setItem("token", data.data);
+          window.localStorage.setItem("userType", data.userType);
           window.localStorage.setItem("loggedIn", true);
-
-          window.location.href = "./userDetails";
+          
+          if (data.userType == "Admin") {
+            
+            return (window.location.href = "./admin-dashboard");
+          } else {
+            window.location.href = "./userDetails";
+          }
         }
       });
   }
@@ -38,7 +46,7 @@ export default function Login() {
     <div className="auth-wrapper">
       <div className="auth-inner">
         <form onSubmit={handleSubmit}>
-          <h3>Sign In</h3>
+          <h3>Login</h3>
 
           <div className="mb-3">
             <label>Email address</label>
@@ -79,7 +87,7 @@ export default function Login() {
             </button>
           </div>
           <p className="forgot-password text-right">
-            <a href="/sign-up">Sign Up</a>
+            <a href="/register">Register</a>
           </p>
         </form>
       </div>

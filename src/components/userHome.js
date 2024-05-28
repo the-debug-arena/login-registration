@@ -1,9 +1,9 @@
 import React, { Component, useEffect, useState } from "react";
-
+import "../App.css";
 export default function UserHome({ userData }) {
   const logOut = () => {
     window.localStorage.clear();
-    window.location.href = "./sign-in";
+    window.location.href = "./login";
   };
   return (
     <div className="auth-wrapper">
@@ -54,7 +54,7 @@ export default function UserHome({ userData }) {
 //   //logout
 //   const logOut = () => {
 //     window.localStorage.clear();
-//     window.location.href = "./sign-in";
+//     window.location.href = "./login";
 //   };
 
 //   //deleting user

@@ -1,7 +1,8 @@
 import React, { Component, useEffect, useState } from "react";
 import AdminHome from "./adminHome";
-
+import "../App.css";
 import UserHome from "./userHome";
+import { Navigate } from "react-router-dom";
 
 export default function UserDetails() {
   const [userData, setUserData] = useState("");
@@ -32,10 +33,10 @@ export default function UserDetails() {
         if (data.data == "token expired") {
           alert("Token expired login again");
           window.localStorage.clear();
-          window.location.href = "./sign-in";
+          window.location.href = "./login";
         }
       });
   }, []);
 
-  return admin ? <AdminHome /> : <UserHome userData={userData} />;
+  return <UserHome userData={userData} />;
 }

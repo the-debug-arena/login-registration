@@ -88,3 +88,30 @@ th,
 td {
   border: 1px solid black !important;
 }
+
+/* Navbar styles */
+.navbar {
+  background-color: #333;
+  padding: 1rem;
+}
+
+.nav-list {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin: 0 1rem;
+}
+
+.nav-link {
+  color: white !important;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  text-decoration: none;
+}
